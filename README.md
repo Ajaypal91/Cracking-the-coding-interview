@@ -1,5 +1,5 @@
 # Cracking-the-coding-interview
-My Solutions to cracking the coding interview questions
+These are my solutions to cracking the coding interview questions
 This repository contains the solutions to the book cracking the coding interview. 
 I had placed different problems from chapters in their respective packages, so they are easy to track. 
 Languages used Java, C++
