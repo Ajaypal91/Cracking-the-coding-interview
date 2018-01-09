@@ -16,6 +16,7 @@ public class _3RemoveDuplicates {
 
 	}
 	
+	//assuming string only contains a-z characters
 	private static String removeDuplicates(String s){
 		
 		StringBuilder sb =  new StringBuilder();
