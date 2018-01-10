@@ -46,7 +46,6 @@ class myLinkedList extends LinkedList {
 		Node curr = head;
 		
 		//remove duplicates
-		curr = head;
 		Node prev = head;
 		while(curr != null) {
 			if (dic.containsKey(curr.val)) {
