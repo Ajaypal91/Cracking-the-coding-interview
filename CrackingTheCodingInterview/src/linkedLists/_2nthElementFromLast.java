@@ -49,7 +49,10 @@ public class _2nthElementFromLast {
 	}
 	
 	//Assuming atleast n nodes
-	private static int getNthUsingPointers(Node head, int n){
+	private static Integer getNthUsingPointers(Node head, int n){
+		
+		if (head == null || n < 0)
+			return null;
 		
 		Node curr = head, fast = head;
 		int l = n;
