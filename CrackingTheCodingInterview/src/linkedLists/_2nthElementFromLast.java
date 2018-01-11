@@ -26,6 +26,10 @@ public class _2nthElementFromLast {
 		
 		System.out.println(getNthElementFromLast(l.head, n));
 		System.out.println(getNthUsingPointers(l.head, n));
+		Tuple t = new Tuple();
+		getNthFromLastRec(l.head, n, t);
+		System.out.println(t.node.val);
+		
 		
 		l.printLinkedList();
 		
@@ -68,5 +72,23 @@ public class _2nthElementFromLast {
 		}
 		
 		return curr.val;
+	} 
+	
+	private static int getNthFromLastRec(Node curr, int n, Tuple t){
+		
+		if (curr == null){
+			return 0;
+		}
+		int val = getNthFromLastRec(curr.next, n, t)+1;
+		
+		if (val == n){
+			t.node = curr;
+		}
+		return val;
 	}
+}
+
+
+class Tuple{
+	Node node;
 }
