@@ -42,6 +42,13 @@ public class _4AddTwoNumbers {
 		
 		l3.printLinkedList();
 		
+		Node head = addNumbersFollowUpQ(l1.head, l2.head);
+		
+		while (head!=null){
+			System.out.print(head.val+" --> ");
+			head = head.next;
+		}
+		System.out.println("null");
 		
 		sc.close();
 	}
@@ -120,6 +127,74 @@ public class _4AddTwoNumbers {
 		else if (carry > 0){
 			res.insertAtEnd(carry);
 		}
+		
+	}
+	
+	private static Node addNumbersFollowUpQ(Node n1, Node n2){
+		
+		int l1 = 0;
+		Node curr = n1;
+		while(curr != null){
+			l1+=1; curr = curr.next;
+		}
+		
+		int l2 = 0;
+		curr = n2;
+		while(curr != null){
+			l2+=1; curr = curr.next;
+		}
+		
+		Node curr1 = n1; Node curr2 = n2;
+		if (l1 > l2){
+			int l = l1-l2;
+			while(l!=0){
+				Node n = new Node(0);
+				n.next = curr2;
+				curr2 = n;
+				l-=1;
+			}
+			n2 = curr2;
+		}
+		if(l2 > l1){
+			int l = l2-l1;
+			while(l!=0){
+				Node n = new Node(0);
+				n.next = curr1;
+				curr1 = n;
+				l-=1;
+			}
+			n1 = curr1;
+		}
+		
+		Node head = addNumRec(n1, n2);
+		
+		if (head.val >= 10){
+			Node n = new Node(head.val/10);
+			head.val = head.val%10;
+			n.next = head;
+			head = n;
+		}
+		
+		return head;
+	}
+	
+	private static Node addNumRec(Node n1, Node n2){
+		
+		if (n1 == null || n2 == null){
+			return null;
+		}
+		
+		Node n = addNumRec(n1.next, n2.next);
+		
+		int sum = n1.val+n2.val;
+		if(n!=null){
+			sum += n.val/10;
+			n.val = n.val%10;
+		}
+		
+		Node currNode = new Node(sum);
+		currNode.next = n;
+		return currNode;
 		
 	}
 
