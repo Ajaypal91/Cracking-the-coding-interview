@@ -45,4 +45,21 @@ public class LinkedList {
 		System.out.print("null\n");
 	}
 	
+	public Node getNodeAt(int n){
+		Node curr = head;
+		n-=1;
+		while(n!=0){
+			curr = curr.next;
+			n-=1;
+		}
+		return curr;
+	}
+	
+	public Node getLastNode(){
+		Node curr = head;
+		while(curr.next != null)
+			curr = curr.next;
+		return curr;
+	}
+	
 }

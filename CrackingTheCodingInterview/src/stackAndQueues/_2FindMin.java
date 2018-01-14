@@ -30,13 +30,3 @@ class Stack {
 	}
 	
 }
-
-class Node {
-	int val;
-	int prevMin;
-	
-	public Node(int val, int prMin){
-		this.val = val;
-		this.prevMin = prMin;
-	}
-}

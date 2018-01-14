@@ -1,4 +1,4 @@
-package treesAndGraphs;
+package treesAndGraphs.graphs;
 
 public class Edge {
 

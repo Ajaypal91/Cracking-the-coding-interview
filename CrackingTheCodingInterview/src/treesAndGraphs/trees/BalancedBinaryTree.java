@@ -1,4 +1,4 @@
-package treesAndGraphs;
+package treesAndGraphs.trees;
 
 import java.util.ArrayList;
 

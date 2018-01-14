@@ -18,7 +18,23 @@ public class _1UniqueString {
 		//using bit array
 		System.out.println(isUniqueUsingBitArray(s));
 		
+		//using 32 bit variable. Assuming that string only contains a-z characters
+		System.out.println(isUnique(s));
 		sc.close();
+	}
+	
+	private static boolean isUnique(String s){
+		
+		int check = 0;
+		
+		for (char c : s.toCharArray()){
+			int val = (int)(c-'a');
+			if ((	check & (1 << val)) > 0)
+				return false;
+			check |= 1 << val;
+		}
+		
+		return true;
 	}
 
 	private static boolean isUniqueUsingBitArray(String s) {
