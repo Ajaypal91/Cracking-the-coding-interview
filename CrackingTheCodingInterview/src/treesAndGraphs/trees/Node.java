@@ -1,4 +1,4 @@
-package treesAndGraphs;
+package treesAndGraphs.trees;
 
 class Node {
     public int value;
