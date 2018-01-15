@@ -20,7 +20,8 @@ public class GraphTraversals {
 				x.visited = true;
 			}
 			for (Vertex i : adjList.get(x)){
-				que.offer(i);
+				if (!i.visited)
+					que.offer(i);
 			}
 			
 		}
