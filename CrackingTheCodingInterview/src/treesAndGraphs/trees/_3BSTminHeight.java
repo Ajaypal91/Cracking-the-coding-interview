@@ -11,7 +11,7 @@ public class _3BSTminHeight {
 		
 		Scanner sc = new Scanner(System.in);
 		List<Integer> lst = new ArrayList<>();
-		System.out.println("Enter values for creating Binary Search Tree. 0 to exit");
+		System.out.println("Enter values for creating Binary Search Tree, -1 for null and 0 to exit");
 		int v = sc.nextInt();
 		while(v != 0) {
 			lst.add(v);
