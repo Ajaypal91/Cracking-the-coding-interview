@@ -33,8 +33,10 @@ public class BinaryTree {
 				//left child is present
 				if (leftChild < len){
 					Node lChild  = null;
-					if (vals.get(leftChild) != -1)
+					if (vals.get(leftChild) != -1){
 						lChild = new Node(vals.get(leftChild));
+						lChild.parent = n;
+					}
 					n.left = lChild;
 					if (lChild != null)
 						que.add(lChild);
@@ -42,8 +44,10 @@ public class BinaryTree {
 				//right child is present
 				if (rightChild < len){
 					Node rChild  = null;
-					if (vals.get(rightChild) != -1)
+					if (vals.get(rightChild) != -1){
 						rChild = new Node(vals.get(rightChild));
+						rChild.parent = n;
+					}
 					n.right = rChild;
 					if (rChild != null)
 						que.add(rChild);
