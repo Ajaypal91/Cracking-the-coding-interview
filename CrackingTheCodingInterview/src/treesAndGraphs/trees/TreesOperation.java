@@ -1,6 +1,7 @@
 package treesAndGraphs.trees;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class TreesOperation {
@@ -92,6 +93,25 @@ public class TreesOperation {
 			return 0;
 		
 		return numberOfNodesTrees(root.left) + numberOfNodesTrees(root.right) + 1; 
+		
+	}
+	
+	public static void getListNodes(Node root, List<Node> arr){
+		
+		Queue<Node> que = new LinkedList<Node>();
+		que.offer(root);
+		arr.add(root);
+		while(!que.isEmpty()){
+			
+			Node n = que.poll();
+			Node lChild = n.left;
+			Node rChild = n.right;
+			arr.add(lChild); arr.add(rChild);
+			if (lChild != null)
+				que.offer(lChild);
+			if (rChild != null)
+				que.offer(rChild);
+		}
 		
 	}
 	
