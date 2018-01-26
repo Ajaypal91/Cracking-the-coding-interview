@@ -25,7 +25,7 @@ public class _6InOrderSuccessor {
 		bt.insertNodeinLevelOrder(lst);
 		
 		List<Node> arr = new ArrayList<>();
-		getListNodes(bt.root, arr);
+		TreesOperation.getListNodes(bt.root, arr);
 		
 		System.out.println("Tell Index of node to find its successor based on level order travesing of tree");
 		
@@ -37,24 +37,6 @@ public class _6InOrderSuccessor {
 		sc.close();
 	}
 	
-	private static void getListNodes(Node root, List<Node> arr){
-		
-		Queue<Node> que = new LinkedList<Node>();
-		que.offer(root);
-		arr.add(root);
-		while(!que.isEmpty()){
-			
-			Node n = que.poll();
-			Node lChild = n.left;
-			Node rChild = n.right;
-			arr.add(lChild); arr.add(rChild);
-			if (lChild != null)
-				que.offer(lChild);
-			if (rChild != null)
-				que.offer(rChild);
-		}
-		
-	}
 	
 	private static Node inOrderSucc(Node c){
 		
@@ -86,6 +68,27 @@ public class _6InOrderSuccessor {
 		
 		return succ;
 	}
+	
+	//incase of inorder predecessor
+	//if the left subtree is non empty then it is the rightmost node in the left child's subtree
+	//else it is its parent
+	private static Node inorderPred(Node c){
+		
+		Node pred = null;
+		
+		if (c.left != null){
+			pred = c.left;
+			while(pred.right != null){
+				pred = pred.right;
+			}
+		}
+		else{
+			pred = c.parent;
+		}
+		
+		return pred;
+	}
+	
 	
 
 }
