@@ -5,6 +5,16 @@ import java.util.List;
 import java.util.Scanner;
 
 //https://www.geeksforgeeks.org/maximum-sum-tree-adjacent-levels-not-allowed/
+
+/**
+ * 
+ * Additional links
+ * https://www.geeksforgeeks.org/find-maximum-path-sum-in-a-binary-tree/
+ * https://www.geeksforgeeks.org/find-maximum-path-sum-two-leaves-binary-tree/
+ * @author ajay
+ *
+ */
+
 public class _9fMaxSumNoAdjLevels {
 
 	public static void main(String[] args) {
