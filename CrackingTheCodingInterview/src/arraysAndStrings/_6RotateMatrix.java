@@ -16,7 +16,7 @@ public class _6RotateMatrix {
 			}
 		}
 		
-		rotateMatClockwise(mat);
+		rotate(mat);
 		
 		for(int i = 0; i < n; i++){
 			for (int j = 0; j < n; j++){
@@ -55,6 +55,38 @@ public class _6RotateMatrix {
 				mat[lastRow][j] = temp;
 			}
 		}
+	}
+	
+	private static void rotate(int[][] mat) {
+		
+		int n = mat.length;
+		
+		for (int layer = 0; layer < n/2; layer++) {
+			
+			int first = layer;
+			int last = n-1-layer;
+			
+			for (int i = first; i < last; i++) {
+				
+				//top-left
+				int top = mat[first][i];
+				
+				//bottom-left to top-left
+				mat[first][i] = mat[last-i+first][first];
+				
+				//bottom-right to bottom-left
+				mat[last-i+first][first] = mat[last][last-i+first];
+				
+				//top-right to bottom-right
+				mat[last][last-i+first] = mat[i][last];
+				
+				//top-left to top-right
+				mat[i][last] = top;
+			}
+			
+		}
+		
+		
 	}
 
 }
