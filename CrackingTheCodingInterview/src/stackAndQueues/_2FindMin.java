@@ -1,32 +1,43 @@
 package stackAndQueues;
 
+import java.util.Stack;
+
 public class _2FindMin {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		myStack stk = new myStack();
 	}
 
 }
 
-class Stack {
-	public int top;
-	public int min;
-	public Node[] stk;
+@SuppressWarnings("serial")
+class myStack extends Stack<Integer> {
 	
-	public Stack(){
-		this.top = -1;
-		this.stk = new Node[300];
+	Stack<Integer> minStack;
+	
+	myStack(){
+		minStack = new Stack<>();
 	}
 	
 	public void push(int val) {
-		if (top == 299) {
-			System.out.println("Overflow. Exiting!");
-			return;
-		}
-		else {
-			
-		}
+		
+		if (val < min())
+			minStack.push(val);
+		super.push(val);
+	}
+	
+	public Integer pop() {
+		if(min() == super.peek())
+			minStack.pop();
+		return super.pop();
+	}
+	
+	public int min() {
+		if (minStack.isEmpty())
+			return Integer.MAX_VALUE;
+		else
+			return minStack.peek();
 	}
 	
 }
