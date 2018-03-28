@@ -4,8 +4,8 @@ public class _3ElementInRotatedArr {
 
 	public static void main(String[] args) {
 		
-		int[] arr = {5,6,7,8,9,10,11,1,2};
-		int k = 1;
+		int[] arr = {1};
+		int k = 0;
 		System.out.println(findElement(arr, 0, arr.length-1, k));
 	}
 	
@@ -14,6 +14,9 @@ public class _3ElementInRotatedArr {
 		if(start > end) {
 			return -1;
 		}
+		//in case of 1 elements
+		if(start == end)
+			return arr[start] == k ? start : -1;
 		
 		int mid = (start+end)/2;
 	
@@ -32,7 +35,7 @@ public class _3ElementInRotatedArr {
 			else
 				return findElement(arr, start, mid-1, k);
 		}
-		else {
+		else { //check for continuous repeating elements
 			if(arr[mid] == arr[start] && arr[mid] == arr[end]) {
 				int left = findElement(arr, start, mid, k);
 				int right = findElement(arr, mid, end, k);
