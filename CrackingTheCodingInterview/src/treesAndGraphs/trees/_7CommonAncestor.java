@@ -6,6 +6,20 @@ import java.util.Scanner;
 
 public class _7CommonAncestor {
 
+	public static boolean v1, v2;
+	static Node root;
+	
+	static class Result{
+		
+		Node node;
+		boolean isAnc;
+		public Result(Node n, boolean val){
+			node = n;
+			isAnc = val;
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		//create a BT
 		Scanner sc = new Scanner(System.in);
@@ -27,11 +41,17 @@ public class _7CommonAncestor {
 		//get two nodes
 		System.out.println("Tell Index of first node");
 		Node n1 = arr.get(sc.nextInt()-1);
+		System.out.println("Node selected = "+n1.value);
 		System.out.println("Tell Index of second node");
 		Node n2 = arr.get(sc.nextInt()-1);
-		
-		Node res = getCommonAncestor(bt.root, n1, n2);
-		System.out.println(res.value);
+		System.out.println("Node selected = "+n2.value);
+//		Node res = getCommonAncestor(bt.root, n1, n2);
+		root = bt.root;
+		Node res = findLCA(n1.value, n2.value);
+		if(res == null)
+			System.out.println("Null Value");
+		else
+			System.out.println(res.value);
 		
 		sc.close();
 	}
@@ -70,5 +90,48 @@ public class _7CommonAncestor {
 		return isn1OnLeft && isn2OnLeft ? commonAncestor(root.left, n1, n2) : commonAncestor(root.right, n1, n2);
 		
 	}
+	
+	
+	
+	//OPTIMIZED O(n) solution from Cracking the coding interview
+	public static Result findLCAUtil(Node root, int n1, int n2)
+    {
+        
+		if(root == null)
+			return new Result(null, false);
+		
+		if(root.value == n1 && root.value == n2)
+			return new Result(root, true);
+		
+		Result left = findLCAUtil(root.left, n1, n2);
+		if(left.isAnc)
+			return left;
+		Result right = findLCAUtil(root.right, n1, n2);
+		if(right.isAnc)
+			return right;
+		
+		if(left.node != null && right.node != null)
+			return new Result(root, true);
+		if(root.value == n1 || root.value == n2){
+			boolean isAv = left.node != null || right.node != null ? true :false;
+			return new Result(root, isAv);
+		}
+		else{
+			return new Result(left.node != null ? left.node : right.node , false);
+		}
+	
+    }
+ 
+    // Find lca of n1 and n2 under the subtree rooted with 'node'
+    public static Node findLCA(int n1, int n2)
+    {
+    	Result lca = findLCAUtil(root, n1, n2);
+ 
+    	if(lca.isAnc)
+    		return lca.node;
+        
+        return null;
+    }
 
 }
+
